@@ -129,26 +129,27 @@ export default function Register({ navigation }) {
                   disabled={!isValid}
                   onPress={handleSubmit}
                 >
-                  <Text style={styles.buttonAccount_text}>
-                    Sign in my account
+                  <Text style={styles.buttonAccount_text}>Create account</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonPhone}>
+                  <Text style={styles.buttonPhone_text}>
+                    Sign up with Google
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonPhone}>
                   <Text style={styles.buttonPhone_text}>
-                    Sign up with Phone Number
+                    Sign up with Facebook
                   </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.signUp}>
-                <Text style={styles.signUpText}>
-                  Already have an account?
-                  <TouchableOpacity
-                    style={styles.signUpButton}
-                    onPress={() => navigation.navigate("Login")}
-                  >
-                    <Text style={styles.signUpButtonText}> Sign In</Text>
-                  </TouchableOpacity>
-                </Text>
+                <Text style={styles.signUpText}>Already have an account?</Text>
+                <TouchableOpacity
+                  style={styles.signUpButton}
+                  onPress={() => navigation.navigate("Login")}
+                >
+                  <Text style={styles.signUpButtonText}> Sign In</Text>
+                </TouchableOpacity>
               </View>
             </View>
           )}
@@ -162,7 +163,7 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     paddingVertical: 10,
-    marginHorizontal: 30,
+    marginHorizontal: 50,
   },
   topContainer: {
     justifyContent: "center",
@@ -214,7 +215,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "coral",
     padding: 10,
     borderRadius: 25,
-    paddingVertical: 20,
+    paddingVertical: 10,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,
@@ -228,9 +229,10 @@ export const styles = StyleSheet.create({
     backgroundColor: "#1C1939",
     padding: 10,
     borderRadius: 25,
-    paddingVertical: 20,
+    paddingVertical: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 10,
   },
   buttonPhone_text: {
     color: "white",
@@ -238,7 +240,12 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  signUp: { alignItems: "flex-end", marginTop: 10 },
+  signUp: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent:"center",
+    marginTop: 10,
+  },
   signUpText: { justifyContent: "center", alignItems: "center" },
   signUpButton: {},
   signUpButtonText: { fontWeight: "bold" },

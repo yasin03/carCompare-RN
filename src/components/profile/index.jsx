@@ -6,9 +6,33 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Icon  from "react-native-vector-icons/FontAwesome5";
+import { Popup } from "react-native-popup-confirm-toast";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
+  const handleLogout = () => {
+    Popup.show({
+      type: "confirm",
+      title: "Attention!",
+      textBody: "Are you sure you want to logout?",
+      buttonText: "Logout",
+      okButtonStyle: { backgroundColor: "red" },
+      confirmText: "Cancel",
+      callback: () => {
+        /*         Popup.show({
+          type: "success",
+          title: "Success!",
+          textBody: `Successfully Loged Out!`,
+          okButtonStyle: { backgroundColor: "red" },
+          callback: () => Popup.hide(),
+        }); */
+        Popup.hide(), navigation.navigate("Login");
+      },
+      cancelCallback: () => {
+        Popup.hide();
+      },
+    });
+  };
   return (
     <SafeAreaView className="mx-4 flex-1 items-center">
       <View className="flex justify-center items-center w-36 h-36 bg-red-400 rounded-full my-12">
@@ -34,8 +58,11 @@ const Profile = () => {
         <Text>waren.campbell@gmail.com </Text>
       </View>
 
-      <TouchableOpacity className="flex-row gap-2 justify-center items-center rounded-3xl p-3 w-72 bg-red-500 border border-red-300">
-        <Icon name="arrow-down" size={22} color={"white"}/>
+      <TouchableOpacity
+        className="flex-row gap-2 justify-center items-center rounded-3xl p-3 w-72 bg-red-500 border border-red-300"
+        onPress={handleLogout}
+      >
+        <Icon name="arrow-down" size={22} color={"white"} />
         <Text className="text-xl text-white font-semibold">Logout</Text>
       </TouchableOpacity>
     </SafeAreaView>

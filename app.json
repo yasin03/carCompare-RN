@@ -3,6 +3,16 @@
     "name": "cars-swh",
     "slug": "cars-swh",
     "version": "1.0.0",
+    "plugins": [
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1680492825744460",
+          "clientToken": "8d950386c82120382889ca2dd6b98183",
+          "displayName": "RN_Cars_Login"
+        }
+      ]
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,8 +35,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": ["cars-swh","fb1680492825744460"]
+    "scheme": ["cars-swh", "fb1680492825744460"]
   }
 }
-
-

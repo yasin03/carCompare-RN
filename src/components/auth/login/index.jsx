@@ -187,7 +187,7 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     paddingVertical: 50,
-    marginHorizontal: 30,
+    marginHorizontal: 50,
   },
   topContainer: {
     justifyContent: "center",
@@ -223,15 +223,15 @@ export const styles = StyleSheet.create({
     backgroundColor: "coral",
     padding: 10,
     borderRadius: 25,
-    paddingVertical: 20,
+    paddingVertical: 15,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 5,
   },
   button2: {
-    padding: 10,
+    padding: 8,
     borderRadius: 25,
-    paddingVertical: 20,
+    paddingVertical: 15,
     marginBottom: 5,
   },
   button_text: {

@@ -11,15 +11,20 @@ import Login from "../components/auth/login";
 import Register from "../components/auth/register";
 import { StyleSheet, View } from "react-native";
 import CarCompare from "../components/cars/car-compare";
+import CarCreate from "../components/home/car-create";
+import CarUpdate from "../components/home/car-update";
 
 const HomeStack = createNativeStackNavigator();
 const CarsStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator>
     <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="CarCreate" component={CarCreate} />
+    <HomeStack.Screen name="CarUpdate" component={CarUpdate} />
   </HomeStack.Navigator>
 );
 
@@ -32,21 +37,25 @@ const CarsStackScreen = () => {
   );
 };
 
+const ProfileStackScreen = () => {
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Login" component={Login} />
+    </ProfileStack.Navigator>
+  );
+};
+
 const Router = () => {
   return (
+    /*  <NavigationContainer>
+     <Stack.Navigator initialRouteName="CarStackScreen">
+       <Stack.Screen name="Login" component={Login} />
+       <Stack.Screen name="Register" component={Register} />
+      </Stack.Navigator>
+    </NavigationContainer> */
+
     <NavigationContainer>
-      {/*       <Stack.Navigator initialRouteName="CarStackScreen">
-        <Stack.Screen
-          name="CarStackScreen"
-          component={CarStackScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Cars" component={Cars} />
-        <Stack.Screen name="CarCompare" component={CarCompare} />
-        <Stack.Screen name="CarDetails" component={CarDetails} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator> */}
       <Tab.Navigator
         screenOptions={{
           tabBarShowLabel: false,
@@ -92,9 +101,10 @@ const Router = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={Profile}
+          name="ProfileStackScreen"
+          component={ProfileStackScreen}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color }) => (
               <Icon name="user" size={32} color={color} />
             ),

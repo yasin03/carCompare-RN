@@ -27,7 +27,7 @@ const Cars = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="relative m-4">
+    <SafeAreaView className="relative m-3">
       <ScrollView>
         {cars.map((car, index) => {
           const isSelected = selectedCars.some(
@@ -43,7 +43,7 @@ const Cars = ({ navigation }) => {
               style={{ opacity: isDisabled ? 0.5 : 1 }}
               className="flex flex-row justify-between items-center p-2 rounded-xl mb-4 w-full h-52 border border-gray-500"
             >
-              <View className="flex-1 justify-center items-center w-32 h-32 bg-red-500 rounded-full mr-3 ">
+              <View className="flex justify-center items-center w-28 h-28 bg-red-500 rounded-full mr-1 place-items-center">
                 <Image
                   source={{ uri: car.image }}
                   className="w-[90%] h-[90%] rounded-full bg-white "

@@ -1,14 +1,14 @@
 import React from "react";
 import { Button, Text, TouchableOpacity, View } from "react-native";
 
-const CarCreate = ({ toggleModal }) => {
+const CarUpdate = ({ toggleModal }) => {
   return (
     <View className="flex-1 justify-center items-center">
-      <Text>Car Create Page</Text>
+      <Text>Car Update Page</Text>
 
       <TouchableOpacity title="Hide modal" onPress={toggleModal} />
     </View>
   );
 };
 
-export default CarCreate;
+export default CarUpdate;

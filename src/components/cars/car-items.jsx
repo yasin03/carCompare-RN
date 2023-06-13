@@ -3,12 +3,13 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 
 const CarItems = ({ item, index, navigation }) => {
   return (
-    <TouchableOpacity
+    <View></View>
+/*     <TouchableOpacity
       className="flex flex-col justify-between p-4 rounded-xl mb-4
     w-full h-72 border border-pBlack-200"
       style={{ marginRight: index % 2 !== 0 ? 0 : 10 }}
     >
-      {/* Image Area */}
+
       <View className="flex-1 justify-center items-center w-full h-32">
         <Image
           source={{
@@ -18,10 +19,10 @@ const CarItems = ({ item, index, navigation }) => {
         />
       </View>
 
-      {/* Car Name Area */}
+
       <Text className="font-semibold  text-xl">{item.name}</Text>
 
-      {/* Car Brand Area */}
+
       <View className="flex-row gap-1 items-center">
         <Text className="font-semibold text-blue-600">{item.brand}</Text>
         <Text className="" numberOfLines={2}>
@@ -29,7 +30,7 @@ const CarItems = ({ item, index, navigation }) => {
         </Text>
       </View>
 
-      {/* Car Model Area */}
+
       <View className="flex-row gap-1 justify-between items-center">
         <Text className=" text-pBlack-950" numberOfLines={2}>
           <Text className=" font-semibold text-red-500">Fuel Type : </Text>
@@ -41,7 +42,7 @@ const CarItems = ({ item, index, navigation }) => {
             item?.transmission?.slice(1)}
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableOpacity> */
   );
 };
 
