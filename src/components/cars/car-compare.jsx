@@ -17,7 +17,7 @@ const CarCompare = ({ route }) => {
             <Text className=" font-bold mb-4">{selectedCars[0].name}</Text>
 
             <Text className="mb-2">Brand: {selectedCars[0].brand}</Text>
-            <Text className="mb-2">Model: {selectedCars[0].brand}</Text>
+            <Text className="mb-2">Model: {selectedCars[0].model}</Text>
             <Text className="mb-2">Year: {selectedCars[0].year}</Text>
             <Text className="mb-2">Type: {selectedCars[0].type}</Text>
             <Text className="mb-2">Color: {selectedCars[0].color}</Text>
@@ -40,7 +40,7 @@ const CarCompare = ({ route }) => {
             <Text className=" font-bold mb-4">{selectedCars[1].name}</Text>
 
             <Text className="mb-2">Brand: {selectedCars[1].brand}</Text>
-            <Text className="mb-2">Model: {selectedCars[1].brand}</Text>
+            <Text className="mb-2">Model: {selectedCars[1].model}</Text>
             <Text className="mb-2">Year: {selectedCars[1].year}</Text>
             <Text className="mb-2">Type: {selectedCars[1].type}</Text>
             <Text className="mb-2">Color: {selectedCars[1].color}</Text>

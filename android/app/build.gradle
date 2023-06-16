@@ -113,9 +113,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.anonymous.carsswh'
+    namespace 'com.yasin03.facebookLogin'
     defaultConfig {
-        applicationId 'com.anonymous.carsswh'
+        applicationId 'com.yasin03.facebookLogin'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

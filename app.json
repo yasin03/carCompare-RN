@@ -21,20 +21,43 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.carsswh"
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "package": "com.yasin03.facebookLogin"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": ["cars-swh", "fb1680492825744460"]
+    "scheme": [
+      "facebookLogin",
+      "fb1680492825744460"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "118078c6-4857-4208-a167-7e4aa9a56356"
+      }
+    }
   }
 }

@@ -1,58 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Router from "./src/router/router";
-import {
-  getAuth,
-  FacebookAuthProvider,
-  signInWithCredential,
-} from "firebase/auth";
-import { AccessToken, LoginManager } from "react-native-fbsdk-next";
-import app from "./firebaseSetup";
 import Login from "./src/components/auth/login";
-import { Button, TouchableOpacity, View } from "react-native";
-import Register from "./src/components/auth/register";
 import { Root as PopupRootProvider } from "react-native-popup-confirm-toast";
+import * as Facebook from "expo-auth-session/providers/facebook";
+import * as WebBrowser from "expo-web-browser";
+import useUserStore from "./src/redux/user-store";
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default function App() {
-  /*   const [user, setUser] = useState();
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
 
-  const SignInWithFB = async () => {
-    // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions([
-      "public_profile",
-      "email",
-    ]);
-    if (result.isCancelled) {
-      throw "User cancelled the login process";
+  const [request, response, promptAsync] = Facebook.useAuthRequest({
+    clientId: "1680492825744460",
+  });
+
+  useEffect(() => {
+    if (response && response.type === "success" && response.authentication) {
+      (async () => {
+        const userInfoResponse = await fetch(
+          `https://graph.facebook.com/me?access_token=${response.authentication.accessToken}&fields=id,name,email,phone,picture.type(large)`
+        );
+        const userInfo = await userInfoResponse.json();
+        setUser({ user: userInfo });
+      })();
     }
-    // Once signed in, get the users AccesToken
-    const data = await AccessToken.getCurrentAccessToken();
-    if (!data) {
-      throw "Something went wrong obtaining access token";
+  }, [response]);
+
+  const handlePressAsync = async () => {
+    const result = await promptAsync();
+    if (result.type !== "success") {
+      alert("Uh oh, something went wrong");
+      return;
     }
-
-    const auth = getAuth(app);
-
-    // Create a Firebase credential with the AccessToken
-    const facebookAuthProvider = FacebookAuthProvider.credential(
-      data.accessToken
-    );
-    // console.log("provider ",facebookAuthProvider);
-    // const credential = facebookAuthProvider.credential(data.accessToken);
-    // Sign-in with credential from the Facebook user.
-    signInWithCredential(auth, facebookAuthProvider)
-      .then(() => {})
-      .catch((error) => {
-        // Handle Errors here.]
-        console.log(error);
-      });
-  }; */
+  };
 
   return (
     <PopupRootProvider>
-      <Router />
-      {/* <Login /> */}
-      {/* <Register /> */}
+      {user ? <Router /> : <Login handlePressAsync={handlePressAsync} />}
     </PopupRootProvider>
   );
-
 }

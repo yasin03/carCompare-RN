@@ -22,61 +22,8 @@ import GoogleLogin from "./google-login";
 
 WebBrowser.maybeCompleteAuthSession();
 
-function Login({ navigation }) {
+function Login({ navigation, handlePressAsync }) {
   const [hidePassword, setHidePassword] = useState(true);
-  const [userInfo, setUserInfo] = useState();
-
-  const [request, response, promptAsync] = Facebook.useAuthRequest({
-    clientId: "1680492825744460",
-  });
-
-  _handleSubmit = (values) => {
-    auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then(() => {
-        alert("Giriş Başarılı");
-        navigation.navigate("Home");
-      })
-      .catch((error) => {
-        if (error.code === "auth/wrong-password") {
-          alert("Wrong Password");
-          return;
-        }
-
-        if (error.code === "auth/user-not-found") {
-          alert("User Not Found");
-          return;
-        }
-
-        console.error(error);
-      });
-  };
-
-  useEffect(() => {
-    getUserInfo();
-  }, [response]);
-
-  async function handleSignInWithFacebook() {
-    const result = await promptAsync();
-
-    if (result?.type !== "success") {
-      Alert.alert("Something went wrong");
-      return;
-    }
-  }
-
-  const getUserInfo = async (token) => {
-    if (response && response.type === "success" && response.authentication) {
-      async = async () => {
-        const userInfoResponse = await fetch(
-          `https://www.graph.facebook.com/me?access_token=${response.authentication.accessToken}&fields=id,name,picture.type(large)`,
-          { headers: { Authorization: "Bearer " + token } }
-        );
-        const userInfo = await userInfoResponse.json();
-        setUserInfo(userInfo);
-      };
-    }
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -89,7 +36,6 @@ function Login({ navigation }) {
           email: "",
           password: "",
         }}
-        onSubmit={_handleSubmit}
         validationSchema={Yup.object().shape({
           email: Yup.string().required("Email is required"),
           password: Yup.string().required("Password is required"),
@@ -142,28 +88,26 @@ function Login({ navigation }) {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button2}
-              className="flex-row justify-center items-center bg-gray-400"
+              className="flex-row justify-center items-center bg-blue-900"
               disabled={!isValid}
-              onPress={() => <GoogleLogin promptAsync={promptAsync} />}
-            >
-              <Icon name="google" size={22} color="white" />
-              <Text className="ml-2" style={styles.button_text}>
-                Google
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button2}
-              className="flex-row justify-center items-center bg-gray-400"
-              disabled={!isValid}
-              onPress={() => handleSignInWithFacebook}
+              onPress={handlePressAsync}
             >
               <Icon name="facebook" size={22} color="white" />
               <Text className="ml-2" style={styles.button_text}>
                 Facebook
               </Text>
             </TouchableOpacity>
-
-            <Text>{JSON.stringify(userInfo)}</Text>
+            <TouchableOpacity
+              style={styles.button2}
+              className="flex-row justify-center items-center bg-gray-400"
+              disabled={true}
+              onPress={() => <GoogleLogin />}
+            >
+              <Icon name="google" size={22} color="white" />
+              <Text className="ml-2" style={styles.button_text}>
+                Google
+              </Text>
+            </TouchableOpacity>
 
             <View style={styles.signUp}>
               <Text style={styles.signUpText}>Don’t have an account? -</Text>
@@ -186,7 +130,7 @@ export default Login;
 export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    paddingVertical: 50,
+    paddingVertical: 30,
     marginHorizontal: 50,
   },
   topContainer: {
@@ -198,13 +142,12 @@ export const styles = StyleSheet.create({
   subtitle: { fontSize: 16 },
   formContainer: { justifyContent: "center" },
   input1: {
-    backgroundColor: "rgba(255,127,80,0.1)",
-
+    backgroundColor: "rgba(255,0,0,0.1)",
     borderRadius: 20,
     padding: 10,
     paddingLeft: 20,
     borderWidth: 1,
-    borderColor: "coral",
+    borderColor: "red",
     marginBottom: 10,
   },
   input2: {
@@ -220,7 +163,7 @@ export const styles = StyleSheet.create({
   },
   forgot: { alignItems: "flex-end", marginBottom: 50 },
   button: {
-    backgroundColor: "coral",
+    backgroundColor: "red",
     padding: 10,
     borderRadius: 25,
     paddingVertical: 15,

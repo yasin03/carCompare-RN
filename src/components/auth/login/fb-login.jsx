@@ -2,49 +2,42 @@ import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Facebook from "expo-auth-session/providers/facebook";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import useUserStore from "../../../redux/user-store";
+
 
 WebBrowser.maybeCompleteAuthSession();
 
 const FbLogin = () => {
-  const [userInfo, setUserInfo] = useState();
+  
+ const user = useUserStore((state) => state.user);
+ const setUser = useUserStore((state) => state.setUser);
 
-  const [request, response, promptAsync] = Facebook.useAuthRequest({
-    webClientId:
-      "web-482109045484-v8r0ui0k2rn6dltqngnjd0cip9376k7k.apps.googleusercontent.com",
-    androidClientId:
-      "android-482109045484-g51ookn1gqke4mf9pi9l4re8pdd2lvlp.apps.googleusercontent.com",
-  });
+ console.log("User App ", user);
 
-  useEffect(() => {
-    handleSignInWithGoogle();
-  }, [response]);
+ const [request, response, promptAsync] = Facebook.useAuthRequest({
+   clientId: "1680492825744460",
+ });
 
-  async function handleSignInWithGoogle() {
-    const user = await AsyncStorage.getItem("@user");
-    if (!user) {
-      if (response?.type === "success")
-        await getUserInfo(response.authentication.accessToken);
-    } else {
-      setUserInfo(JSON.parse(user));
-    }
-  }
+ useEffect(() => {
+   if (response && response.type === "success" && response.authentication) {
+     (async () => {
+       const userInfoResponse = await fetch(
+         `https://graph.facebook.com/me?access_token=${response.authentication.accessToken}&fields=id,name,email,picture.type(large)`
+       );
+       const userInfo = await userInfoResponse.json();
+       setUser({ user: userInfo });
+     })();
+   }
+ }, [response]);
 
-  const getUserInfo = async (token) => {
-    if (!token) return;
-    try {
-      const response = await fetch(
-        `https://www.googleapis.com/userinfo/v2/me`,
-        { headers: { Authorization: "Bearer " + token } }
-      );
+ const handlePressAsync = async () => {
+   const result = await promptAsync();
+   if (result.type !== "success") {
+     alert("Uh oh, something went wrong");
+     return;
+   }
+ };
 
-      const user = await response.json();
-      await AsyncStorage.setItem("@user" + JSON.stringify(user));
-      setUserInfo(user);
-    } catch (error) {
-      console.log("Error : " + error);
-    }
-  };
   return (
     <View>
       <Text>FbLogin</Text>

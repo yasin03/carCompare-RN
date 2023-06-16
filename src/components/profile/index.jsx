@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   SafeAreaView,
@@ -8,8 +8,13 @@ import {
 } from "react-native";
 import { Popup } from "react-native-popup-confirm-toast";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import useUserStore from "../../redux/user-store";
 
 const Profile = ({ navigation }) => {
+
+  const {user} = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
+
   const handleLogout = () => {
     Popup.show({
       type: "confirm",
@@ -19,13 +24,7 @@ const Profile = ({ navigation }) => {
       okButtonStyle: { backgroundColor: "red" },
       confirmText: "Cancel",
       callback: () => {
-        /*         Popup.show({
-          type: "success",
-          title: "Success!",
-          textBody: `Successfully Loged Out!`,
-          okButtonStyle: { backgroundColor: "red" },
-          callback: () => Popup.hide(),
-        }); */
+        setUser({});
         Popup.hide(), navigation.navigate("Login");
       },
       cancelCallback: () => {
@@ -33,19 +32,23 @@ const Profile = ({ navigation }) => {
       },
     });
   };
+
+
   return (
     <SafeAreaView className="mx-4 flex-1 items-center">
       <View className="flex justify-center items-center w-36 h-36 bg-red-400 rounded-full my-12">
         <Image
           source={{
-            uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+            uri: user?.picture?.data?.url
+              ? user?.picture?.data?.url
+              : "https://media.istockphoto.com/id/1288129985/vector/missing-image-of-a-person-placeholder.jpg?s=612x612&w=0&k=20&c=9kE777krx5mrFHsxx02v60ideRWvIgI1RWzR1X4MG2Y=",
           }}
           className="w-32 h-32 object-cover rounded-full"
         />
       </View>
       <View className="flex flex-row gap-2 justify-start items-center rounded-3xl p-3 w-72 border border-red-300 mb-6">
         <Text className="text-xl">Name : </Text>
-        <Text className="text-xl">Waren Campbell </Text>
+        <Text className="text-xl">{user?.name} </Text>
       </View>
 
       <View className="flex flex-row gap-2 justify-start items-center  rounded-3xl p-3 w-72 border border-red-300 mb-6">
@@ -55,7 +58,7 @@ const Profile = ({ navigation }) => {
 
       <View className="flex flex-row gap-2 justify-start items-center  rounded-3xl p-3 w-72 border border-red-300 mb-6">
         <Text className="text-xl">Email : </Text>
-        <Text>waren.campbell@gmail.com </Text>
+        <Text>{user?.email} </Text>
       </View>
 
       <TouchableOpacity

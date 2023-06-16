@@ -15,17 +15,14 @@ Bu proje, kullanıcının arabaları karşılaştırmasına olanak tanıyan basi
 
 git clone https://github.com/yasin03/carCompare-RN.git
 
-
 2. Proje klasörüne gidin,
 3. Gerekli paketleri yükleyin:
 
 npm install or yarn add
 
-
 4. Expo CLI ile projeyi başlatın:
 
 expo start or yarn start
-
 
 5. Uygulamayı bir simülatörde çalıştırın veya fiziksel bir cihazda Expo Client uygulamasını kullanarak tarayın.
 
@@ -41,7 +38,6 @@ expo start or yarn start
 8. Üçüncü sekmede profil bilgilerinizi görüntüleyin, fotoğraf, e-posta vb.
 9. Çıkış yapmak için çıkış yap butonuna tıklayın.
 
-
 # Uygulama Resimleri
 
 <img src="./assets/screenshots/login.png" alt="alt text" width="440" height="860">
@@ -52,11 +48,6 @@ expo start or yarn start
 <img src="./assets/screenshots/deleteAction.png" alt="alt text" width="440" height="860">
 <img src="./assets/screenshots/profile.png" alt="alt text" width="440" height="860">
 
-
-
 ## Lisans
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [Lisans Dosyası](LICENCE)
-
-
-
