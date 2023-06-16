@@ -14,7 +14,7 @@ const Profile = ({ navigation }) => {
 
   const {user} = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
-
+console.log("setUser", user.name);
   const handleLogout = () => {
     Popup.show({
       type: "confirm",

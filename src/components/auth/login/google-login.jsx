@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 WebBrowser.maybeCompleteAuthSession();
 
 const GoogleLogin = () => {
-  const [userInfo, setUserInfo] = useState();
+/*   const [userInfo, setUserInfo] = useState();
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     webClientId:
@@ -44,7 +44,7 @@ const GoogleLogin = () => {
     } catch (error) {
       console.log("Error : " + error);
     }
-  };
+  }; */
   return (
     <View>
       <Text>GoogleLogin</Text>

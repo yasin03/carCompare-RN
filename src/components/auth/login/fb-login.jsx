@@ -9,10 +9,8 @@ WebBrowser.maybeCompleteAuthSession();
 
 const FbLogin = () => {
   
- const user = useUserStore((state) => state.user);
+/*  const user = useUserStore((state) => state.user);
  const setUser = useUserStore((state) => state.setUser);
-
- console.log("User App ", user);
 
  const [request, response, promptAsync] = Facebook.useAuthRequest({
    clientId: "1680492825744460",
@@ -36,7 +34,7 @@ const FbLogin = () => {
      alert("Uh oh, something went wrong");
      return;
    }
- };
+ }; */
 
   return (
     <View>

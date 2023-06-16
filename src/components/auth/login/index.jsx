@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,18 +6,12 @@ import {
   TouchableOpacity,
   TextInput,
   SafeAreaView,
-  Button,
-  Alert,
+
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import auth from "@react-native-firebase/auth";
 import * as WebBrowser from "expo-web-browser";
-import * as Google from "expo-auth-session/providers/google";
-import * as Facebook from "expo-auth-session/providers/facebook";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import FbLogin from "./fb-login";
 import GoogleLogin from "./google-login";
 
 WebBrowser.maybeCompleteAuthSession();

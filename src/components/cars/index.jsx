@@ -15,7 +15,6 @@ const Cars = ({ navigation }) => {
   const [disabled, setDisabled] = useState(true);
 
   const handleCarSelect = (car) => {
-    // Maksimum 2 araç seçimini kontrol et
     if (selectedCars.length < 2) {
       setSelectedCars([...selectedCars, car]);
     }
@@ -76,7 +75,6 @@ const Cars = ({ navigation }) => {
       <View>
         <TouchableOpacity
           className="absolute bottom-24 right-1 bg-red-200 p-4 px-5 rounded-full border border-red-400"
-          disabled={disabled}
           onPress={() => {
             navigation.navigate("CarCompare", { selectedCars });
             setSelectedCars([]);
