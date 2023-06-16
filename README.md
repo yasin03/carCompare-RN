@@ -52,19 +52,19 @@ Bu proje, kullanıcının arabaları karşılaştırmasına olanak tanıyan basi
 
 ## Uygulama Resimleri
 
-<img  src="./assets/screenshots/login.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/login.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/home.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/home.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/carCompare.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/carCompare.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/comparePage.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/comparePage.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/update.png"  alt="alt text"  width="240"  height="660">
+<img  src="./assets/screenshots/update.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/deleteAction.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/deleteAction.png"  alt="alt text"  width="250"  height="650">
 
-<img  src="./assets/screenshots/profile.png"  alt="alt text"  width="220"  height="660">
+<img  src="./assets/screenshots/profile.png"  alt="alt text"  width="250"  height="650">
 
 ## Lisans
 
